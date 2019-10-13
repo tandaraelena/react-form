@@ -19,6 +19,7 @@ const Form = () => {
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     console.log(inputValue)
+    setInputValue(initialState)
   }
 
   const handleInputChange = ({ target: {name, value} }) => {
