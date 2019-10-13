@@ -29,14 +29,14 @@ const Form = () => {
   }
 
   return (
-    <StyledForm width={50} onSubmit={handleFormSubmit}>
+    <StyledForm width={100} onSubmit={handleFormSubmit}>
       {data && questions.map(({ title, fields }) => 
         <div key={title}>
           <h2>{title}</h2>
           {fields.map(({ name, label, type, options }) =>
             (type !== 'dropdown' ? 
             <StyledInputField key={name}>
-              <label>{label}</label>
+              <label>{label}: </label>
               <input 
                 name={name}
                 onChange={handleInputChange} 
@@ -45,7 +45,7 @@ const Form = () => {
               />
             </StyledInputField> :
             <StyledSelectField key={name}>
-              <label >{label}</label>
+              <label >{label}: </label>
               <select 
                 name={name}
                 type={type}
