@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyledForm } from './form.style'
+import { StyledForm, StyledInputField, StyledSelectField } from './form.style'
 import data from '../config'
 
 const initialState = {
@@ -35,7 +35,7 @@ const Form = () => {
           <h2>{title}</h2>
           {fields.map(({ name, label, type, options }) =>
             (type !== 'dropdown' ? 
-            <div key={name}>
+            <StyledInputField key={name}>
               <label>{label}</label>
               <input 
                 name={name}
@@ -43,8 +43,8 @@ const Form = () => {
                 value={inputValue[name]} 
                 type={type} 
               />
-            </div> :
-            <div key={name}>
+            </StyledInputField> :
+            <StyledSelectField key={name}>
               <label >{label}</label>
               <select 
                 name={name}
@@ -55,7 +55,7 @@ const Form = () => {
                     key={o}
                   >{o}</option>)}
               </select>
-            </div>)
+            </StyledSelectField>)
           )}
         </div>
       )}

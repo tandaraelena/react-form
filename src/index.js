@@ -1,6 +1,6 @@
 import { render } from 'react-dom'
 import React from 'react'
-import App from './app'
+import App from './components/app'
 
 const whereAppRenders = document.getElementById('where-app-renders')
 
