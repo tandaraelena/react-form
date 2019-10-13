@@ -1,28 +1,30 @@
 import React, { useState } from 'react'
 import { StyledForm } from './form.style'
-import data from '../data'
+import data from '../config'
+
+const initialState = {
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone_number: '',
+  street_address: '',
+  post_code: '',
+}
 
 const Form = () => {
   const { questions } = data;
 
-  const [inputValue, setInputValue] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone_number: '',
-    street_address: '',
-    post_code: '',
-  })
+  const [inputValue, setInputValue] = useState(initialState)
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     console.log(inputValue)
   }
 
-  const handleInputChange = (evt) => {
+  const handleInputChange = ({ target: {name, value} }) => {
     setInputValue({
       ...inputValue,
-      [evt.target.name]: evt.target.value
+      [name]: value
     })
   }
 
@@ -31,7 +33,7 @@ const Form = () => {
       {data && questions.map(({ title, fields }) => 
         <div key={title}>
           <h2>{title}</h2>
-          {fields.map(({ name, label, type }) =>
+          {fields.map(({ name, label, type, options }) =>
             (type !== 'dropdown' ? 
             <div key={name}>
               <label>{label}</label>
@@ -44,12 +46,20 @@ const Form = () => {
             </div> :
             <div key={name}>
               <label >{label}</label>
-              <select />
+              <select 
+                name={name}
+                type={type}
+              >
+                  {options.map(o => 
+                  <option 
+                    key={o}
+                  >{o}</option>)}
+              </select>
             </div>)
           )}
         </div>
       )}
-      <button type='submit'>Submit</button>
+      <button type='submit' >Submit</button>
     </StyledForm>
   )
 }
