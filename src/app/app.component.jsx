@@ -1,10 +1,12 @@
 import React from 'react'
+import Form from '../form'
+import { StyledApp } from './app.style'
 
 const App = () => {
   return (
-    <div>
-      App
-    </div>
+    <StyledApp>
+      <Form/>
+    </StyledApp>
   )
 }
 
