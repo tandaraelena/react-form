@@ -1,4 +1,4 @@
-const data = {
+const data = () => ({
   "questions": [
     {
       "title": "Tell us about yourself",
@@ -18,6 +18,6 @@ const data = {
       ]
     }
   ]
-}
+})
 
 export default data

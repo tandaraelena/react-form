@@ -12,7 +12,7 @@ const initialState = {
 }
 
 const Form = () => {
-  const { questions } = data;
+  const { questions } = data();
 
   const [inputValue, setInputValue] = useState(initialState)
 
@@ -60,7 +60,7 @@ const Form = () => {
           )}
         </div>
       )}
-      <button type='submit' >Submit</button>
+      <button type='submit'>Submit</button>
     </StyledForm>
   )
 }
